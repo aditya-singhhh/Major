@@ -48,7 +48,7 @@ app.post('/send-email', upload.single('file'), (req, res) => {
       <p>You have been invited to join a video consultation with one of your patients. Please use the link below to enter the patient’s room:</p>
 
       <p><strong>Patient Consultation Link:</strong><br>
-      <a href="https://major-1-3kkg.onrender.com//doctor/${uniqueId}">Click here to join the consultation room</a></p>
+      <a href="https://major-1-3kkg.onrender.com/doctor/${uniqueId}">Click here to join the consultation room</a></p>
 
       <p>If you need any assistance or encounter any issues, please feel free to reach out to us.</p>
 
