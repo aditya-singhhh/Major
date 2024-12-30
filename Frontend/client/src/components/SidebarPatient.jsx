@@ -161,7 +161,7 @@ const SidebarPatient = ({ children }) => {
       formData.append('uniqueId', me || 'test-id');
       formData.append('file', pdfFile, 'PatientInformation.pdf');
 
-      await axios.post('http://localhost:5000/send-email', formData, {
+      await axios.post('https://major-4n7q.onrender.com/send-email', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
