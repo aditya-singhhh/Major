@@ -109,7 +109,7 @@ const SidebarPatient = ({ children }) => {
   const generatePDF = async () => {
     try {
       const response = await axios.get(`https://w22r28wjhb.execute-api.us-east-1.amazonaws.com/patients/${id}`);
-      const { userName, age, gender, phoneNumber, symptoms, height, weight, temp, spo2 } = response.data;
+      const { userName, age, gender, phoneNumber, symptoms, height, weight, temp, bpm } = response.data;
       // eslint-disable-next-line new-cap
       const doc = new jsPDF();
       doc.setFontSize(20);
@@ -129,16 +129,8 @@ const SidebarPatient = ({ children }) => {
       doc.text(`Height: ${height} cm`, 10, 95);
       doc.text(`Weight: ${weight} kg`, 10, 105);
       doc.text(`Temperature: ${temp} °F`, 10, 115);
-      doc.text(`SpO2: ${spo2}%`, 10, 125);
-
-      doc.setFontSize(14).text('Symptoms:', 10, 155);
-      if (Array.isArray(symptoms) && symptoms.length > 0) {
-        symptoms.forEach((symptom, index) => {
-          doc.text(`${index + 1}. ${symptom}`, 20, 165 + index * 10);
-        });
-      } else {
-        doc.text('No symptoms provided.', 10, 165);
-      }
+      doc.text(`BPM: ${bpm}`, 10, 125);
+      doc.text(`Symptoms: ${symptoms}`, 10, 135);
 
       return doc.output('blob');
     } catch (err) {
